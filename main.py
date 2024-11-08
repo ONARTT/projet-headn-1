@@ -11,12 +11,16 @@ list_etudiants = [
             Etudiant("Quentin",24)
             ]
 
-@app.route('/', methods=["POST"])
+@app.route('/', methods=["GET", "POST"])
+
+
 
 def index():
 
+    render_template('index.html')
     name = request.form["name"]
     age = request.form["age"]
+    
 
     etudiant = Etudiant(name,age)
     list_etudiants.append(etudiant)
@@ -24,8 +28,6 @@ def index():
     etuds_dicts = [etudiant.to_dict() for etudiant in list_etudiants]
 
     return render_template('index.html', etuds_dicts=etuds_dicts)
-
-
 
 
 
