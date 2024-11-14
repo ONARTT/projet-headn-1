@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from etudiant import Etudiant
 
 
@@ -17,17 +17,23 @@ list_etudiants = [
 
 def index():
 
-    render_template('index.html')
-    name = request.form["name"]
-    age = request.form["age"]
+    if request.method == "POST" :
+        name = request.form["name"]
+        age = request.form["age"]
     
 
-    etudiant = Etudiant(name,age)
-    list_etudiants.append(etudiant)
+        etudiant = Etudiant(name,age)
+        list_etudiants.append(etudiant)
+
+        return redirect(url_for("index"))
 
     etuds_dicts = [etudiant.to_dict() for etudiant in list_etudiants]
 
     return render_template('index.html', etuds_dicts=etuds_dicts)
+
+
+
+
 
 
 
