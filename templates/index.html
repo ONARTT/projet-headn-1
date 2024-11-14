@@ -27,6 +27,7 @@
                 {% for key, value in etudiant.items() %}
                    <p><strong>{{ key }}:</strong> {{ value }}</p>
                 {% endfor %}
+                <a href="etudiant/{{ etudiant.id }}"">Infos...</a>
             </div>
         {% endfor %}
     {% else %}

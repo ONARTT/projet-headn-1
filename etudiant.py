@@ -6,6 +6,7 @@ class Etudiant:
         self.id = next(Etudiant.newid)
         self.name = name
         self.age = age
+        self.notes = []
 
 
 
@@ -13,5 +14,19 @@ class Etudiant:
         return {
             "id": self.id,
             "name": self.name,
-            "age": self.age
+            "age": self.age,
+            "notes": self.notes 
         }
+
+    def addNote(self, note):
+        return self.notes.append(note)
+
+
+        
+    def setName(self, name):
+        self.name = name
+        return
+
+    def setAge(self, age):
+        self.age = age
+        return

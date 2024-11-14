@@ -1,0 +1,28 @@
+<head>
+    <meta charset="utf-8">
+    <title>etudiant.html</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+
+<body>
+    <h1>Bienvenue</h1>
+
+    <a href="/">Accueil</a>
+
+    <div>
+        {% for key, value in etudiant.items() %}
+            <p><strong>{{ key }}:</strong> {{ value }}</p>
+        {% endfor %}
+    </div>
+
+    <a href="/etudiant/edit/{{ etudiant.id }}">Modifier</a>
+
+
+
+    
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,31 @@
+<head>
+    <meta charset="utf-8">
+    <title>edit.html</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+
+<body>
+    <h1>Bienvenue</h1>
+
+    <a href="/">Accueil</a>
+
+   <h2>Modifier étudiant :</h2>
+
+    <form action="/etudiant/edit/{{ etudiant.id }}"" method="POST" enctype="multipart/form-data">
+        <label for="name">Nom:</label>
+        <input type="text" id="name" name="name" value="{{ etudiant.name }}" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="{{ etudiant.age }}" required>
+
+        <button type="submit">Modifier étudiant</button>
+    </form>
+
+    <a href="/etudiant/{{ etudiant.id }}">Retour</a>
+    
+</body>
+
+
+
+
+</html>
