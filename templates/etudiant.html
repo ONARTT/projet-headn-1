@@ -1,28 +1,26 @@
 <head>
     <meta charset="utf-8">
     <title>etudiant.html</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
     <h1>Bienvenue</h1>
 
-    <a href="/">Accueil</a>
+    <a class="button" href="/">Accueil</a>
 
-    <div>
+    <div class="container">
         {% for key, value in etudiant.items() %}
             <p><strong>{{ key }}:</strong> {{ value }}</p>
         {% endfor %}
+        <a href="/etudiant/grades/{{ etudiant.id }}" class="button">Ajouter des notes</a>
+        <a href="/etudiant/edit/{{ etudiant.id }}" class="button">Modifier</a>
+
     </div>
-
-    <a href="/etudiant/edit/{{ etudiant.id }}">Modifier</a>
-
 
 
     
 </body>
-
-
 
 
 </html>

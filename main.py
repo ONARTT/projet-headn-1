@@ -15,6 +15,7 @@ list_etudiants = [
 for i in range (0,3) :
     for p in range (0, 5):
         list_etudiants[i].addNote(random.randint(0,20))
+        list_etudiants[i].calc_moyenne()
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -34,6 +35,7 @@ def index():
     etuds_dicts = [etudiant.to_dict() for etudiant in list_etudiants]
 
     return render_template('index.html', etuds_dicts=etuds_dicts)
+
 
 
 
@@ -67,10 +69,28 @@ def edit(etudiant_id):
 
 
 
-            return redirect(url_for("edit", etudiant_id=etudiant_id))
+            return redirect(url_for("display_etud", etudiant_id=etudiant_id))
     
     return render_template('edit.html', etudiant=etudiant.to_dict())
 
+
+
+@app.route('/etudiant/delete/<int:etudiant_id>', methods=["POST"])
+
+def delete_etudiant(etudiant_id):
+    global list_etudiants
+    list_etudiants = [etd for etd in list_etudiants if etd.id != etudiant_id]
+    return redirect(url_for('index'))
+
+@app.route('/etudiant/grades/<int:etudiant_id>', methods=["GET", "POST"])
+
+def ajout_note(etudiant_id):
+    etudiant = next((etd for etd in list_etudiants if etd.id == etudiant_id), None)
+    if request.method == "POST" :
+        note = int(request.form["note"])
+        etudiant.addNote(note)
+        return redirect(url_for("ajout_note", etudiant_id=etudiant_id))
+    return render_template('grades.html', etudiant=etudiant.to_dict())
 
 if __name__ == '__main__':
     app.run(debug=True)

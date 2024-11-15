@@ -1,0 +1,40 @@
+<head>
+    <meta charset="utf-8">
+    <title>grades.html</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Bienvenue</h1>
+
+    <a class="button" href="/">Accueil</a>
+
+    
+    <div class="container">
+        <h2>Ajouter des notes :</h2>
+
+        <form action="/etudiant/grades/{{ etudiant.id }}"" method="POST" enctype="multipart/form-data">
+            <label for="note"></label>
+            <input type="number" id="note" name="note" min="0" max="20">
+
+            <button type="submit">Ajouter</button>
+        </form>
+        <div>
+            <p><strong>{{ etudiant.nom }} :</strong></p>
+            <p>Notes : {{ etudiant.notes }}</p>
+        </div>
+
+    
+         <a class="button" href="/etudiant/{{ etudiant.id }}">Retour</a>
+    </div>
+    
+
+
+
+    
+</body>
+
+
+
+
+</html>

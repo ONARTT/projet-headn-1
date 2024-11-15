@@ -1,38 +1,46 @@
 <head>
     <meta charset="utf-8">
     <title>index.html</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
     <h1>Bienvenue</h1>
+    <div class="container">
+        <h2>Ajouter un étudiant</h2>
 
-    <h2>Ajouter un étudiant</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
 
-    <form action="/" method="POST" enctype="multipart/form-data">
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name" required>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
-
-        <button type="submit">Ajouter étudiant</button>
-    </form>
-
-    <h2>Liste des étudiants</h2>
-
-    {% if etuds_dicts %}
+            <button type="submit">Ajouter étudiant</button>
+        </form>
+    </div>
+    
+    <div class="container">
+        <h2>Liste des étudiants</h2>
+        {% if etuds_dicts %}
         {% for etudiant in etuds_dicts %}
-            <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+            <div class="student-card">
                 {% for key, value in etudiant.items() %}
                    <p><strong>{{ key }}:</strong> {{ value }}</p>
                 {% endfor %}
-                <a href="etudiant/{{ etudiant.id }}"">Infos...</a>
+                <a class="button" href="etudiant/{{ etudiant.id }}"">Infos...</a>
+                <form action="{{ url_for('delete_etudiant', etudiant_id=etudiant.id) }}" method="POST">
+                    <button type="submit">Supprimer</button>
+                </form>
             </div>
         {% endfor %}
     {% else %}
         <p>Aucun étudiant trouvé.</p>
     {% endif %}
+    </div>
+    
+
+    
     
 </body>
 
