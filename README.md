@@ -6,9 +6,23 @@ Ce projet est une application web simple développée avec Flask permettant de g
 
 ## Fonctionnalités Implémentées
 
-- **Affichage de la liste des étudiants** : Affiche le nom et l'âge de chaque étudiant.
-- **Ajout d'un étudiant** : Permet à l'utilisateur de remplir un formulaire pour ajouter un étudiant à la liste avec son nom et son âge.
-- **Affichage dynamique** : La liste des étudiants est mise à jour automatiquement après chaque ajout sans recharger manuellement la page.
+1. **Afficher les informations des étudiants** :
+   - Liste des étudiants avec leurs détails : nom, âge, notes, et moyenne calculée.
+
+2. **Ajouter un étudiant** :
+   - Formulaire pour saisir le nom, l'âge et éventuellement les notes d'un nouvel étudiant.
+
+3. **Modifier les informations d'un étudiant** :
+   - Mise à jour du nom, de l'âge ou des notes via une interface dédiée.
+
+4. **Supprimer un étudiant** :
+   - Suppression d'un étudiant de la liste en un clic.
+
+5. **Ajouter des notes à un étudiant** :
+   - Ajout de notes supplémentaires à un étudiant sélectionné.
+
+6. **Calculer et afficher la moyenne** :
+   - La moyenne des notes est automatiquement calculée et affichée pour chaque étudiant.
 
 ## Prérequis
 
